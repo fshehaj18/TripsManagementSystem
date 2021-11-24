@@ -1,0 +1,28 @@
+<mat-nav-list>
+    <div class="logo py 4">
+        <img src="https://www.lufthansa.com/etc/designs/dcep/logo-lh-og.jpg" height="120px" width="260px" alt="Company Logo">
+    </div>
+    <mat-divider>
+
+    </mat-divider>
+    <h2 matSubheader class="mt-2">Application</h2>
+
+    <a mat-list-item>
+        <mat-icon>home</mat-icon> Home
+
+    </a>
+    <a routerLink="/users" routerLinkActive="active-link" mat-list-item>
+        <mat-icon>dashboard</mat-icon> Manage Workers
+
+    </a>
+
+    <a routerLink="/role/2" routerLinkActive="active-link" mat-list-item>
+        <mat-icon>dashboard</mat-icon> Manage Supervisors
+
+    </a>
+    <a routerLink="/roles" routerLinkActive="active-link" mat-list-item>
+        <mat-icon>dashboard</mat-icon> Manage Roles
+
+    </a>
+    
+</mat-nav-list>
