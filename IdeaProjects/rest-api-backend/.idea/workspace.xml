@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d6d2334b-5887-4925-9c03-f4700353fabf" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="JPA Inspector" value="true" />
+        <entry key="JPA Palette" value="true" />
+        <entry key="JPA Structure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="JPA Inspector" value="false" />
+        <entry key="JPA Palette" value="false" />
+        <entry key="JPA Structure" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectId" id="20uyZKCBrfcog3iI7i8mPFgCokK" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="inlay.hints.JAVA" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.Fridi.ecommerce" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.SpringBootRestApi">
+    <configuration name="SpringBootEcommerceApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="rest-api-backend" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.Fridi.ecommerce.SpringBootRestApi" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringBootEcommerceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="rest-api-backend" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.Fridi.ecommerce.SpringBootRestApi" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SpringBootRestApi" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="rest-api-backend" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.Fridi.rest.SpringBootRestApi" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\acer\AppData\Roaming\Subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d6d2334b-5887-4925-9c03-f4700353fabf" name="Changes" comment="" />
+      <created>1636908821860</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1636908821860</updated>
+      <workItem from="1636908823016" duration="5118000" />
+      <workItem from="1636927583964" duration="1821000" />
+      <workItem from="1636966590820" duration="602000" />
+      <workItem from="1636993278745" duration="994000" />
+      <workItem from="1637098353700" duration="2531000" />
+      <workItem from="1637105172589" duration="2160000" />
+      <workItem from="1637166909386" duration="5124000" />
+      <workItem from="1637192139341" duration="601000" />
+      <workItem from="1637238314258" duration="2943000" />
+      <workItem from="1637253993429" duration="9000" />
+      <workItem from="1637254262163" duration="36000" />
+      <workItem from="1637445972498" duration="6254000" />
+      <workItem from="1637488114705" duration="4604000" />
+      <workItem from="1637537494447" duration="1203000" />
+      <workItem from="1637598378049" duration="2025000" />
+      <workItem from="1637612549085" duration="12327000" />
+      <workItem from="1637653807546" duration="25428000" />
+      <workItem from="1637736419443" duration="1234000" />
+      <workItem from="1637737687307" duration="1093000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
