@@ -8,6 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -36,9 +37,9 @@ public class AuthenticationController {
 
     @PostMapping("/login")
     @ResponseBody
-    public AuthenticationResponse createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
+    public ResponseEntity<AuthenticationResponse> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
 
-        logger.debug("Entered username is: " + authenticationRequest.getUsername()); // logger
+        logger.info("Entered username is: " + authenticationRequest.getUsername()); // logger
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(),
                 authenticationRequest.getPassword()));
 
@@ -47,8 +48,7 @@ public class AuthenticationController {
         }
         AuthenticationResponse authenticationResponse = new AuthenticationResponse(jwtTokenUtil.generateToken(authenticationRequest.getUsername()));
 
-        return authenticationResponse;
-        //return ResponseEntity.ok().body(authenticationResponse);
+        return ResponseEntity.ok().body(authenticationResponse);
     }
 
 
