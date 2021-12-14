@@ -39,7 +39,7 @@ public class AuthenticationController {
     @ResponseBody
     public ResponseEntity<AuthenticationResponse> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws Exception {
 
-        logger.info("Entered username is: " + authenticationRequest.getUsername()); // logger
+        logger.debug("Entered username is: " + authenticationRequest.getUsername()); // logger
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(),
                 authenticationRequest.getPassword()));
 

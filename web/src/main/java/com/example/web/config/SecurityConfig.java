@@ -1,7 +1,6 @@
 package com.example.web.config;
 
 
-
 import com.example.service.filters.JwtAuthorizationFilter;
 import com.example.service.service.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;

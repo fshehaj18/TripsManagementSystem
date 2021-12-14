@@ -61,6 +61,16 @@ public class TripServiceImpl implements TripService {
             throw new Exception("Trip cannot be edited after sent!");
 
 
+        trip.setTripReason(tripDto.getTripReason());
+        trip.setDescription(tripDto.getDescription());
+
+        trip.setArrivalDate(tripDto.getArrivalDate());
+        trip.setOrigin(tripDto.getOrigin());
+        trip.setDepartureDate(tripDto.getDepartureDate());
+        trip.setArrivalDate(tripDto.getArrivalDate());
+        trip.setDestination(tripDto.getDestination());
+
+
         return tripRepository.save(trip);
     }
 

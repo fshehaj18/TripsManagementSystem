@@ -1,7 +1,6 @@
 package com.example.service.filters;
 
 
-
 // check the existence and validity of the access token on the Authorization header
 
 import com.example.service.service.MyUserDetailsService;

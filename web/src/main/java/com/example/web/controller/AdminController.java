@@ -32,11 +32,9 @@ public class AdminController {
     @Autowired
     private FlightServiceImpl flightService;
 
-    private static final Logger logger = LogManager.getLogger(AuthenticationController.class);
-
 
     @PostMapping("/users")
-    public ResponseEntity<User> createUser(@RequestBody UserDto userInfo) throws Exception {
+    public ResponseEntity<UserDto> createUser(@RequestBody UserDto userInfo) throws Exception {
 
         return ResponseEntity.ok().body(userService.saveUser(userInfo));
     }
@@ -70,7 +68,6 @@ public class AdminController {
     public void logout() {
 
     }
-
 
 
 }

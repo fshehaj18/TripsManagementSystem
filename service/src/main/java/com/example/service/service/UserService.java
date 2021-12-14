@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface UserService {
 
-    User saveUser(UserDto userDto) throws Exception;
+    UserDto saveUser(UserDto userDto) throws Exception;
 
     User updateUser(Long id, UserDto userDto) throws Exception;
 
