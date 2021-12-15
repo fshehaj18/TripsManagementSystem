@@ -19,20 +19,15 @@ public class MyUserDetailsService implements UserDetailsService {
     @Autowired
     private UserServiceImpl userServiceImpl;
 
-    private static final Logger logger = LogManager.getLogger(MyUserDetailsService.class);
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        User user = userServiceImpl.findByEmail(email);
 
+        User user = userServiceImpl.findByEmail(email);
         List<SimpleGrantedAuthority> authorities = Arrays.asList(new SimpleGrantedAuthority(user.getRole().getRoleName()));
-        logger.debug("User role: " + authorities);
 
         return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), authorities);
     }
 
-    public User getUserByEmail(String email) {
-        return userServiceImpl.findByEmail(email);
-    }
 
 }

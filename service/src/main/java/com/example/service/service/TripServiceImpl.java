@@ -110,7 +110,7 @@ public class TripServiceImpl implements TripService {
             throw new Exception("Trip cannot be deleted after sent!");
 
             if (trip.getUser() != user)
-                throw new Exception("Cannot delete this trip!");
+                throw new Exception("Cannot delete this trip! Not your trip");
 
         tripRepository.delete(trip);
     }

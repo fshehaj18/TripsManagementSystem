@@ -43,11 +43,9 @@ public class AuthenticationController {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authenticationRequest.getUsername(),
                 authenticationRequest.getPassword()));
 
-        if (!passwordEncoder.matches(authenticationRequest.getPassword(), userDetailsService.getUserByEmail(authenticationRequest.getUsername()).getPassword())) {
-            throw new Exception("Wrong credentials! Authentication failed.");
-        }
-        AuthenticationResponse authenticationResponse = new AuthenticationResponse(jwtTokenUtil.generateToken(authenticationRequest.getUsername()));
 
+        AuthenticationResponse authenticationResponse = new AuthenticationResponse(jwtTokenUtil.generateToken(authenticationRequest.getUsername()));
+    logger.debug("User " + authenticationRequest.getUsername() + " successfully authenticated.");
         return ResponseEntity.ok().body(authenticationResponse);
     }
 

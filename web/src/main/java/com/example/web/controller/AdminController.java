@@ -39,6 +39,12 @@ public class AdminController {
         return ResponseEntity.ok().body(userService.saveUser(userInfo));
     }
 
+    @PatchMapping("/user/{id}")
+    public ResponseEntity<User> editUser(@RequestBody UserDto userInfo, @PathVariable Long id) throws Exception {
+
+        return ResponseEntity.ok().body(userService.updateUser(id, userInfo));
+    }
+
     @GetMapping("/users")
     public ResponseEntity<List<User>> getAllUsers() throws NotFoundException {
         return ResponseEntity.ok().body(userService.getAllUsers());
@@ -61,11 +67,12 @@ public class AdminController {
 
     @PutMapping("flight/{id}")
     public ResponseEntity<Flight> updateFlight(@RequestBody FlightDto flightDto, @PathVariable Long id) throws Exception {
-        return ResponseEntity.ok().body(flightService.saveFlight(flightDto));
+        return ResponseEntity.ok().body(flightService.updateFlight(flightDto, id));
     }
 
     @GetMapping("/flights")
     public ResponseEntity<List<Flight>> getFlights(){
+
         return ResponseEntity.ok().body(flightService.getFlights());
     }
 

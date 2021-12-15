@@ -12,7 +12,7 @@ public interface FlightService {
 
     Flight updateFlight(FlightDto flightDto, Long id);
 
-    List<Flight> searchFlights(String origin, String destination, LocalDateTime departureDate, LocalDateTime arrivalDate);
+    List<Flight> searchFlights(String origin, String destination, LocalDateTime departureDate, LocalDateTime arrivalDate) throws Exception;
 
     List<Flight> getFlights();
 

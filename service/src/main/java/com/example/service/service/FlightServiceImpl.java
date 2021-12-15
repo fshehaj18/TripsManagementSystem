@@ -49,7 +49,13 @@ public class FlightServiceImpl implements FlightService {
     }
 
     @Override
-    public List<Flight> searchFlights(String origin, String destination, LocalDateTime departureDate, LocalDateTime arrivalDate) {
+    public List<Flight> searchFlights(String origin, String destination, LocalDateTime departureDate, LocalDateTime arrivalDate) throws Exception {
+
+        if(origin.equals(destination))
+            throw new Exception("Origin cannot be equal with destination!");
+        if(departureDate.isAfter(arrivalDate))
+            throw new Exception("Invalid dates");
+
         List<Flight> directFlights = flightRepository.getDirectFlights(origin, destination, departureDate, arrivalDate).get();
         if (!directFlights.isEmpty())
             return flightRepository.getFlightsByOrigin(origin, departureDate, arrivalDate);
@@ -59,6 +65,8 @@ public class FlightServiceImpl implements FlightService {
 
     @Override
     public List<Flight> getFlights() {
+
+        System.out.println(flightRepository.findAll());
         return flightRepository.findAll();
     }
 

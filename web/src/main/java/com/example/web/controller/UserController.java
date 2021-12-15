@@ -31,9 +31,6 @@ public class UserController {
     private TripServiceImpl tripService;
 
     @Autowired
-    private MyUserDetailsService myUserDetailsService;
-
-    @Autowired
     private FlightServiceImpl flightService;
 
     private static final Logger logger = LogManager.getLogger(AuthenticationController.class);
@@ -54,7 +51,7 @@ public class UserController {
 
     @GetMapping("/trip")
     public ResponseEntity<List<Trip>> getAllUserTrips(Principal principal) {
-        User user = myUserDetailsService.getUserByEmail(principal.getName());
+        User user = userService.findByEmail(principal.getName());
         return ResponseEntity.ok().body(tripService.filterTripsByUser(user.getId()));
 
     }
@@ -79,7 +76,7 @@ public class UserController {
     @PutMapping("trip/{id}/flight")
     public ResponseEntity<Flight> addFlight(@PathVariable Long id, @RequestBody FlightIdDto flightIdDto, Principal principal) throws Exception {
         User user = userService.findByEmail(principal.getName());
-        System.out.println(flightIdDto);
+        logger.debug(flightIdDto);
         return ResponseEntity.ok().body(tripService.addFlight(id, flightIdDto, principal.getName()));
     }
 
@@ -94,11 +91,14 @@ public class UserController {
     }
 
     @GetMapping("/flights")
-    public ResponseEntity<List<Flight>> getAllFlights(@RequestBody FlightDto flightDto) {
-        System.out.println(flightDto.getArrivalDate().toLocalDate());
+    public ResponseEntity<List<Flight>> searchFlights(@RequestBody FlightDto flightDto) throws Exception {
+        logger.debug(flightDto);
         return ResponseEntity.ok().body(flightService.searchFlights(flightDto.getOrigin(), flightDto.getDestination(),
                 flightDto.getDepartureDate(), flightDto.getArrivalDate()));
     }
 
-
+    @GetMapping("/all-flights")
+    public ResponseEntity<List<Flight>> getAllFlights(){
+        return ResponseEntity.ok().body(flightService.getFlights());
+    }
 }

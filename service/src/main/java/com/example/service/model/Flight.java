@@ -14,7 +14,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-public class Flight implements Serializable {
+public class Flight {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

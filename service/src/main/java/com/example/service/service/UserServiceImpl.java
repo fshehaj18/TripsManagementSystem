@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService {
             user.setRole(role);
              userRepository.save(user);
              return userDto;
-        }).orElseThrow(() -> new Exception("Role not found"));
+        }).orElseThrow(() -> new Exception("Role not supported"));
     }
 
     @Override
