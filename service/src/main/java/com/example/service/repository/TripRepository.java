@@ -19,5 +19,8 @@ public interface TripRepository extends JpaRepository<Trip, Long> {
     @Query("select t from Trip t where t.user.id=?1")
     List<Trip> filterTripsByUser(Long userId);
 
+    @Query("select t from Trip t where t.tripStatus<>?1")
+    List<Trip> getSendTrips(TripStatus tripStatus);
+
 
 }

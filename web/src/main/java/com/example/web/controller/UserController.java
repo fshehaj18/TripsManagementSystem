@@ -85,10 +85,12 @@ public class UserController {
 
 
     @DeleteMapping("/trip/{id}")
-    public void deleteTrip(@PathVariable Long id, Principal principal) throws Exception {
+    public ResponseEntity<Void> deleteTrip(@PathVariable Long id, Principal principal) throws Exception {
         User user = userService.findByEmail(principal.getName());
 
-        tripService.deleteTrip(id);
+        tripService.deleteTrip(id, user);
+
+        return ResponseEntity.ok().body(null);
     }
 
     @GetMapping("/flights")

@@ -16,9 +16,6 @@ public class FlightServiceImpl implements FlightService {
     @Autowired
     private FlightRepository flightRepository;
 
-    @Autowired
-    private TripRepository tripRepository;
-
     @Override
     public Flight saveFlight(FlightDto flightDto) throws Exception {
 
@@ -43,6 +40,10 @@ public class FlightServiceImpl implements FlightService {
     public Flight updateFlight(FlightDto flightDto, Long id) {
 
         Flight flight = flightRepository.getById(id);
+        flight.setOrigin(flightDto.getOrigin());
+        flight.setDepartureDate(flightDto.getDepartureDate());
+        flight.setArrivalDate(flightDto.getArrivalDate());
+        flight.setDestination(flightDto.getDestination());
 
         return flightRepository.save(flight);
     }
@@ -55,4 +56,21 @@ public class FlightServiceImpl implements FlightService {
 
         return directFlights;
     }
+
+    @Override
+    public List<Flight> getFlights() {
+        return flightRepository.findAll();
+    }
+
+    @Override
+    public void deleteFlight(Long id) {
+         flightRepository.delete(flightRepository.findById(id).get());
+    }
+
+    @Override
+    public Flight findById(Long id) {
+        return flightRepository.findById(id).get();
+    }
+
+
 }

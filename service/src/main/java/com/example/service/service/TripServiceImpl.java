@@ -83,7 +83,9 @@ public class TripServiceImpl implements TripService {
 
     @Override
     public List<Trip> getAllSendTrips() {
-        return tripRepository.filterTripsByStatus(TripStatus.WAITING);
+
+        //get all trips except the ones which are not sent(tripStatus = CREATED)
+        return tripRepository.getSendTrips(TripStatus.CREATED);
     }
 
     @Override
@@ -102,10 +104,14 @@ public class TripServiceImpl implements TripService {
     }
 
     @Override
-    public void deleteTrip(Long id) throws Exception {
+    public void deleteTrip(Long id, User user) throws Exception {
         Trip trip = tripRepository.findById(id).get();
         if (trip.getTripStatus() != TripStatus.CREATED)
             throw new Exception("Trip cannot be deleted after sent!");
+
+            if (trip.getUser() != user)
+                throw new Exception("Cannot delete this trip!");
+
         tripRepository.delete(trip);
     }
 
@@ -135,10 +141,6 @@ public class TripServiceImpl implements TripService {
         return flight;
     }
 
-    @Override
-    public Trip sendTrip(Long tripId) {
-        return null;
-    }
 
     @Override
     public Trip answerTripRequest(Long tripId, TripStatusDto tripStatusDto) throws Exception {

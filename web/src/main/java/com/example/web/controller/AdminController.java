@@ -64,10 +64,16 @@ public class AdminController {
         return ResponseEntity.ok().body(flightService.saveFlight(flightDto));
     }
 
-    @PostMapping("/logout")
-    public void logout() {
-
+    @GetMapping("/flights")
+    public ResponseEntity<List<Flight>> getFlights(){
+        return ResponseEntity.ok().body(flightService.getFlights());
     }
 
+    @DeleteMapping("flight/{id}")
+    public ResponseEntity<Void> deleteFlight( @PathVariable Long id) throws Exception {
 
+        flightService.deleteFlight(id);
+
+        return ResponseEntity.ok().body(null);
+    }
 }

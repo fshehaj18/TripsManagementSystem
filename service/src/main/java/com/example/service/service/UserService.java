@@ -20,5 +20,7 @@ public interface UserService {
 
     User changePassword(String password, Long id);
 
+    User findById(Long id);
+
 
 }

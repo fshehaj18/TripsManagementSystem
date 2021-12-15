@@ -23,13 +23,11 @@ public interface TripService {
 
     List<Trip> filterTripsByReason(TripReason tripReason);
 
-    void deleteTrip(Long id) throws Exception;
+    void deleteTrip(Long id, User user) throws Exception;
 
     List<Trip> filterTripsByUser(Long userId);
 
     Flight addFlight(Long tripId, FlightIdDto flightIdDto, String email) throws Exception;
-
-    Trip sendTrip(Long tripId);
 
     Trip answerTripRequest(Long tripId, TripStatusDto tripStatusDto) throws Exception;
 

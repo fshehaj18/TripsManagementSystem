@@ -10,6 +10,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import static org.hamcrest.Matchers.any;
 import static org.mockito.Mockito.when;
 
 
@@ -32,7 +33,10 @@ public class TripServiceTests {
     public void get_trips() {
 
         Trip trip = new Trip();
-        when(tripRepository.findById(1L)).thenReturn(java.util.Optional.of(trip));
+       // when(tripRepository.findById(1L)).thenReturn(java.util.Optional.of(trip));
+
+        //when(tripRepository.save(trip).thenReturn(new Trip());
+
     }
 
     @Test

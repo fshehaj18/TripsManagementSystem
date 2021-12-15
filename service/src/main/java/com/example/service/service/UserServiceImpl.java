@@ -79,6 +79,11 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(user);
     }
 
+    @Override
+    public User findById(Long id) {
+        return userRepository.findById(id).get();
+    }
+
 
     @Bean
     public PasswordEncoder passwordEncoder(){ return new BCryptPasswordEncoder(); }
