@@ -29,7 +29,7 @@ public class FlightServiceTests {
     FlightRepository flightRepository;
 
     @BeforeEach
-    void setup() throws Exception{
+    void setup() throws Exception {
         MockitoAnnotations.initMocks(this);
     }
 
@@ -44,31 +44,32 @@ public class FlightServiceTests {
         flight.setFlightId(0L);
         flight.setOrigin("Tirane");
         flight.setDestination("Paris");
-        flight.setArrivalDate(LocalDateTime.of(2022, Month.JANUARY, 21,10,10));
-        flight.setDepartureDate(LocalDateTime.of(2022, Month.JANUARY, 18,12,10));
+        flight.setArrivalDate(LocalDateTime.of(2022, Month.JANUARY, 21, 10, 10));
+        flight.setDepartureDate(LocalDateTime.of(2022, Month.JANUARY, 18, 12, 10));
         //flightRepository.save(flight);
 
         when(flightRepository.save(flight)).thenReturn(flight);
 
         FlightDto flightDto = new FlightDto();
-        flightDto.setArrivalDate(LocalDateTime.of(2022, Month.JANUARY, 22,10,10));
+        flightDto.setArrivalDate(LocalDateTime.of(2022, Month.JANUARY, 22, 10, 10));
         flightDto.setOrigin("Tirane");
         flightDto.setDestination("Milano");
-        flightDto.setDepartureDate(LocalDateTime.of(2022, Month.JANUARY, 18,12,10));
+        flightDto.setDepartureDate(LocalDateTime.of(2022, Month.JANUARY, 18, 12, 10));
 
-       Flight flight1 = flightService.saveFlight(flightDto);
+        Flight flight1 = flightService.saveFlight(flightDto);
 
-       System.out.println(flight1);
+        System.out.println(flight1);
 
-       Flight getFlight1 = flightRepository.getById(0L);
+        Flight getFlight1 = flightRepository.getById(0L);
 
-       verify(flightRepository, times(1)).save(flight);
+        verify(flightRepository, times(1)).save(flight);
     }
 
     @Test
     public void create_flight() {
 
     }
+
     @Test
     public void get_flight_by_id() {
 
@@ -76,8 +77,8 @@ public class FlightServiceTests {
         flight.setFlightId(1L);
         flight.setOrigin("Tirane");
         flight.setDestination("Paris");
-        flight.setArrivalDate(LocalDateTime.of(2022, Month.JANUARY, 21,10,10));
-        flight.setDepartureDate(LocalDateTime.of(2022, Month.JANUARY, 18,12,10));
+        flight.setArrivalDate(LocalDateTime.of(2022, Month.JANUARY, 21, 10, 10));
+        flight.setDepartureDate(LocalDateTime.of(2022, Month.JANUARY, 18, 12, 10));
 
         when(flightRepository.findById(1L)).thenReturn(Optional.of(flight));
 
@@ -93,8 +94,8 @@ public class FlightServiceTests {
         flight.setFlightId(120L);
         flight.setOrigin("Tirane");
         flight.setDestination("Paris");
-        flight.setArrivalDate(LocalDateTime.of(2022, Month.JANUARY, 21,10,10));
-        flight.setDepartureDate(LocalDateTime.of(2022, Month.JANUARY, 18,12,10));
+        flight.setArrivalDate(LocalDateTime.of(2022, Month.JANUARY, 21, 10, 10));
+        flight.setDepartureDate(LocalDateTime.of(2022, Month.JANUARY, 18, 12, 10));
 
         when(flightRepository.findById(1L)).thenReturn(Optional.of(flight));
 

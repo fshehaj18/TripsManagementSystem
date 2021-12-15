@@ -25,7 +25,7 @@ public class TripServiceTests {
     TripRepository tripRepository;
 
     @BeforeEach
-    void setup() throws Exception{
+    void setup() throws Exception {
         MockitoAnnotations.initMocks(this);
     }
 
@@ -33,7 +33,7 @@ public class TripServiceTests {
     public void get_trips() {
 
         Trip trip = new Trip();
-       // when(tripRepository.findById(1L)).thenReturn(java.util.Optional.of(trip));
+        // when(tripRepository.findById(1L)).thenReturn(java.util.Optional.of(trip));
 
         //when(tripRepository.save(trip).thenReturn(new Trip());
 

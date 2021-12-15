@@ -41,8 +41,8 @@ public class UserServiceImpl implements UserService {
 
         return roleRepository.findById(userDto.getRoleId()).map(role -> {
             user.setRole(role);
-             userRepository.save(user);
-             return userDto;
+            userRepository.save(user);
+            return userDto;
         }).orElseThrow(() -> new Exception("Role not supported"));
     }
 
@@ -86,6 +86,8 @@ public class UserServiceImpl implements UserService {
 
 
     @Bean
-    public PasswordEncoder passwordEncoder(){ return new BCryptPasswordEncoder(); }
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
 }

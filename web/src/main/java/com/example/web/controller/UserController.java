@@ -57,8 +57,8 @@ public class UserController {
     }
 
     @PutMapping("/trip/{id}/send")
-    public ResponseEntity<Trip> sendTrip(@PathVariable Long id) {
-        return ResponseEntity.ok().body(tripService.changeTripStatus(id, TripStatus.WAITING));
+    public ResponseEntity<Trip> sendTrip(@PathVariable Long id) throws Exception {
+        return ResponseEntity.ok().body(tripService.sendTrip(id));
     }
 
     @GetMapping("/trip/status")

@@ -109,8 +109,8 @@ public class TripServiceImpl implements TripService {
         if (trip.getTripStatus() != TripStatus.CREATED)
             throw new Exception("Trip cannot be deleted after sent!");
 
-            if (trip.getUser() != user)
-                throw new Exception("Cannot delete this trip! Not your trip");
+        if (trip.getUser() != user)
+            throw new Exception("Cannot delete this trip! Not your trip");
 
         tripRepository.delete(trip);
     }
@@ -155,5 +155,13 @@ public class TripServiceImpl implements TripService {
     @Override
     public Trip findById(Long id) {
         return tripRepository.findById(id).get();
+    }
+
+    @Override
+    public Trip sendTrip(Long id) throws Exception {
+        Trip trip = tripRepository.findById(id).get();
+        if (trip.getTripStatus() != TripStatus.CREATED)
+            throw new Exception("Already sent!");
+        return changeTripStatus(id, TripStatus.WAITING);
     }
 }

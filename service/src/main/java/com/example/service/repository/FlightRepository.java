@@ -10,9 +10,9 @@ import java.util.Optional;
 
 public interface FlightRepository extends JpaRepository<Flight, Long> {
 
-    @Query("select f from Flight f where f.origin=?1 and f.destination=?2 and f.arrivalDate>=?3 and f.departureDate<=?4 ")
-    Optional<List<Flight>> getDirectFlights(String origin, String destination, LocalDateTime departureDate, LocalDateTime arrivalDate);
+    @Query("select f from Flight f where f.origin=?1 and f.destination=?2 and f.arrivalDate<=?3 and f.departureDate>=?4 ")
+    Optional<List<Flight>> getDirectFlights(String origin, String destination, LocalDateTime arrivalDate, LocalDateTime departureDate);
 
-    @Query("SELECT f from Flight f where f.origin=?1 and f.arrivalDate<=?2 and f.departureDate<=?3 ")
-    List<Flight> getFlightsByOrigin(String origin, LocalDateTime arrivalDate, LocalDateTime departureDate);
+    @Query("SELECT f from Flight f where f.origin=?1 and f.arrivalDate<=?2 and f.departureDate>=?3 ")
+    Optional<List<Flight>> getFlightsByOrigin(String origin, LocalDateTime arrivalDate, LocalDateTime departureDate);
 }

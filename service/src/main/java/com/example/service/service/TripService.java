@@ -33,5 +33,6 @@ public interface TripService {
 
     Trip findById(Long id);
 
+    Trip sendTrip(Long id) throws Exception;
 
 }
