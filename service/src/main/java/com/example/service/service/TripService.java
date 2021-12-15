@@ -19,9 +19,9 @@ public interface TripService {
 
     List<Trip> getAllTrips();
 
-    List<Trip> filterTripsByStatus(TripStatus tripStatus);
+    List<Trip> filterTripsByStatus(TripStatus tripStatus, User user);
 
-    List<Trip> filterTripsByReason(TripReason tripReason);
+    List<Trip> filterTripsByReason(TripReason tripReason, User user);
 
     void deleteTrip(Long id, User user) throws Exception;
 
@@ -33,6 +33,8 @@ public interface TripService {
 
     Trip findById(Long id);
 
-    Trip sendTrip(Long id) throws Exception;
+    Trip sendTrip(Long id, User user) throws Exception;
+
+    List<Trip> filterSentTripsByReason(TripReason tripReason);
 
 }

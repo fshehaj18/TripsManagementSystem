@@ -1,6 +1,7 @@
 package com.example.web.controller;
 
 import com.example.service.dto.FlightDto;
+import com.example.service.dto.TripReasonDto;
 import com.example.service.dto.TripStatusDto;
 import com.example.service.dto.UserDto;
 import com.example.service.model.Flight;
@@ -17,6 +18,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -58,6 +60,12 @@ public class AdminController {
     @PutMapping("/trip/{id}/send")
     public ResponseEntity<Trip> answerRequest(@RequestBody TripStatusDto tripStatusDto, @PathVariable Long id) throws Exception {
         return ResponseEntity.ok().body(tripService.answerTripRequest(id, tripStatusDto));
+    }
+
+    @GetMapping("/trip/reason")
+    public ResponseEntity<List<Trip>> filterSentTripsByReason(@RequestBody TripReasonDto tripReasonDto) {
+        return ResponseEntity.ok().body(tripService.filterSentTripsByReason(tripReasonDto.getTripReason()));
+
     }
 
     @PostMapping("flight")

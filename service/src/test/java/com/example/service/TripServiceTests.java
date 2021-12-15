@@ -29,19 +29,6 @@ public class TripServiceTests {
         MockitoAnnotations.initMocks(this);
     }
 
-    @Test
-    public void get_trips() {
 
-        Trip trip = new Trip();
-        // when(tripRepository.findById(1L)).thenReturn(java.util.Optional.of(trip));
-
-        //when(tripRepository.save(trip).thenReturn(new Trip());
-
-    }
-
-    @Test
-    public void send_trip() {
-
-    }
 
 }

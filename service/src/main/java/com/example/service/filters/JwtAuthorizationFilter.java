@@ -58,6 +58,7 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
+            logger.debug("The jwt filter passed!");
             filterChain.doFilter(request, response);
 
         }

@@ -94,13 +94,14 @@ public class TripServiceImpl implements TripService {
     }
 
     @Override
-    public List<Trip> filterTripsByStatus(TripStatus status) {
-        return tripRepository.filterTripsByStatus(status);
+    public List<Trip> filterTripsByStatus(TripStatus status, User user) {
+
+        return tripRepository.filterTripsByStatus(status, user);
     }
 
     @Override
-    public List<Trip> filterTripsByReason(TripReason tripReason) {
-        return tripRepository.filterTripsByReason(tripReason);
+    public List<Trip> filterTripsByReason(TripReason tripReason, User user) {
+        return tripRepository.filterTripsByReason(tripReason, user);
     }
 
     @Override
@@ -158,10 +159,17 @@ public class TripServiceImpl implements TripService {
     }
 
     @Override
-    public Trip sendTrip(Long id) throws Exception {
+    public Trip sendTrip(Long id, User user) throws Exception {
         Trip trip = tripRepository.findById(id).get();
+        if(user != trip.getUser())
+            throw new Exception("You are not allowed to send this trip!");
         if (trip.getTripStatus() != TripStatus.CREATED)
             throw new Exception("Already sent!");
         return changeTripStatus(id, TripStatus.WAITING);
+    }
+
+    @Override
+    public List<Trip> filterSentTripsByReason(TripReason tripReason) {
+        return null;
     }
 }

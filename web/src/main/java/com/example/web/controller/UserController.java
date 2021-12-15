@@ -57,19 +57,22 @@ public class UserController {
     }
 
     @PutMapping("/trip/{id}/send")
-    public ResponseEntity<Trip> sendTrip(@PathVariable Long id) throws Exception {
-        return ResponseEntity.ok().body(tripService.sendTrip(id));
+    public ResponseEntity<Trip> sendTrip(@PathVariable Long id, Principal principal) throws Exception {
+        User user = userService.findByEmail(principal.getName());
+        return ResponseEntity.ok().body(tripService.sendTrip(id, user));
     }
 
     @GetMapping("/trip/status")
-    public ResponseEntity<List<Trip>> filterTripsByStatus(@RequestBody TripStatusDto tripStatusDto) {
-        return ResponseEntity.ok().body(tripService.filterTripsByStatus(tripStatusDto.getTripStatus()));
+    public ResponseEntity<List<Trip>> filterTripsByStatus(@RequestBody TripStatusDto tripStatusDto, Principal principal) {
+        User user = userService.findByEmail(principal.getName());
+        return ResponseEntity.ok().body(tripService.filterTripsByStatus(tripStatusDto.getTripStatus(), user));
 
     }
 
     @GetMapping("/trip/reason")
-    public ResponseEntity<List<Trip>> filterTripsByReason(@RequestBody TripReasonDto tripReasonDto) {
-        return ResponseEntity.ok().body(tripService.filterTripsByReason(tripReasonDto.getTripReason()));
+    public ResponseEntity<List<Trip>> filterTripsByReason(@RequestBody TripReasonDto tripReasonDto, Principal principal) {
+        User user = userService.findByEmail(principal.getName());
+        return ResponseEntity.ok().body(tripService.filterTripsByReason(tripReasonDto.getTripReason(), user));
 
     }
 
