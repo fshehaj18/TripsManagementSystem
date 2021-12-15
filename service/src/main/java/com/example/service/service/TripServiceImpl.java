@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -171,5 +172,17 @@ public class TripServiceImpl implements TripService {
     @Override
     public List<Trip> filterSentTripsByReason(TripReason tripReason) {
         return null;
+    }
+    public List<Flight> getFlightsByTrip(Long id){
+        Trip trip = findById(id);
+        List<Flight> flights = flightRepository.findAll();
+        List<Flight> flights1 = new ArrayList<>();
+        for(Flight f: flights) {
+            for (Trip t : f.getTrips()) {
+                if(t.getTripId() == id)
+                    flights1.add(f);
+            }
+        }
+        return flights1;
     }
 }

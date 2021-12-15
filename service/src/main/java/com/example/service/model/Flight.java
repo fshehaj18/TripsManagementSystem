@@ -33,7 +33,7 @@ public class Flight {
     @Column(nullable = false)
     private LocalDateTime arrivalDate;
 
-    @ManyToMany(cascade = {CascadeType.ALL})
+    @ManyToMany(cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     @JoinTable(
             name = "Trip_Flight",
             joinColumns = {@JoinColumn(name = "flight_id")},

@@ -2,6 +2,7 @@ package com.example.service.service;
 
 import com.example.service.dto.FlightDto;
 import com.example.service.model.Flight;
+import com.example.service.model.Trip;
 import com.example.service.repository.FlightRepository;
 import com.example.service.repository.TripRepository;
 import org.springframework.beans.factory.annotation.Autowired;

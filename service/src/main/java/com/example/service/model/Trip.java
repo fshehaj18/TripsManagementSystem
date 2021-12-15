@@ -2,10 +2,12 @@ package com.example.service.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table
@@ -45,6 +47,7 @@ public class Trip implements Serializable {
     @ManyToOne
     @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "user_id", foreignKeyDefinition = "FOREIGN KEY (user_id) REFERENCES user(id)"))
     private User user;
+
 
     @Override
     public String toString() {

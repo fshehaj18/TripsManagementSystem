@@ -104,4 +104,8 @@ public class UserController {
     public ResponseEntity<List<Flight>> getAllFlights(){
         return ResponseEntity.ok().body(flightService.getFlights());
     }
+    @GetMapping("trip/{id}/flights")
+    public ResponseEntity<List<Flight>> getFlightsByTrip(@PathVariable Long id){
+        return ResponseEntity.ok().body(tripService.getFlightsByTrip(id));
+    }
 }
