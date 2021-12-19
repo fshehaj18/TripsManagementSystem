@@ -1,0 +1,36 @@
+<table class="table table-hover">
+
+    <thead class="thead-dark">
+       
+        <th>Origin</th>
+        <th>Destination</th>
+        <th>Description</th>
+        <th>Departure Date</th>
+        <th>Arrival Date</th>
+        <th>Reason</th>
+         <th>Status</th>
+        <th>Accept</th>
+        <th>Reject</th>
+    </thead>
+
+    <tbody>
+        
+        <tr  *ngFor="let tempTrip of trips">
+
+           
+            <td > {{ tempTrip.origin}}</td>
+            <td> {{ tempTrip.destination}}</td>
+            <td> {{ tempTrip.description}}</td>  
+            <td> {{ tempTrip.tripReason}}</td> 
+            <td> {{ tempTrip.departureDate}}</td> 
+            <td> {{ tempTrip.arrivalDate}}</td>
+             <td > {{ tempTrip.tripStatus}}</td> 
+            <td>
+                 
+                <button *ngIf="tempTrip.tripStatus==='WAITING'" class="btn btn-success btn-sm rounded-0" type="button" data-placement="top" title="Edit" ><fa-icon [icon]="faCheck"></fa-icon> </button>
+            
+            </td>
+          <td><button *ngIf="tempTrip.tripStatus==='WAITING'" class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><fa-icon [icon]="faTimes"></fa-icon></button></td>
+        </tr>
+    </tbody>
+</table>

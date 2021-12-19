@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+        <form >
+          <div class="card">
+            <div class="card-header" style="font-weight: bold; font-size: 22px;">Create Flight</div>
+    
+            <div class="card-body">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputName" >Origin</label>
+                <input type="email" class="form-control" [(ngModel)] = "flight.origin"  name = "origin" id="inputOrigin" placeholder="Origin">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputName" >Origin</label>
+                <input type="email" class="form-control" [(ngModel)] = "flight.destination"  name = "destination" id="inputName" placeholder="Destination">
+              </div>
+              </div>
+                  <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="inputName">Departure Date</label>
+                        <input type="datetime-local" class="form-control" [(ngModel)] = "flight.departureDate"  name = "pass" id="inputPass" placeholder="Password">
+                      </div>
+                      </div>
+            <div class="form-group">
+              <label for="inputEmail">Arrival Date</label>
+              <input type="datetime-local" class="form-control" name = "arrivalDate" id="inputArrivalDate" [(ngModel)] = "flight.arrivalDate" placeholder="someone@example.com">
+            </div>
+  
+      <button class="btn btn-primary" type="submit" (click)="onSubmit()">Create Flight</button>
+    </div>
+  </div>
+    </form>
+  </div>
+  </div>
+  </div>

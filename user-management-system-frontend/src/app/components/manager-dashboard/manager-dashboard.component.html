@@ -1,0 +1,18 @@
+ <mat-drawer-container>
+    <mat-drawer mode="side" opened="true">
+    <app-sidenav></app-sidenav>
+  </mat-drawer>
+    <mat-drawer-content>
+  
+    
+      <app-header></app-header>
+      <h1 class="mt-3 mb-3">User Management System</h1>
+  <div class="container">
+    <a  *ngIf="hasRoute('users')"
+    button class="btn btn-inverse btn-sm rounded-0" (click)="createUser()" style="padding-bottom: 1rem;" type="button" data-toggle="tooltip" data-placement="top" > <fa-icon [icon]="faUserPlus"></fa-icon>Add Employee
+    </a> 
+  <app-user-list></app-user-list>
+
+  </div>
+    </mat-drawer-content>
+  </mat-drawer-container>   
