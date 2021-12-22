@@ -13,7 +13,7 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanDeactivate<u
     if(this._jwtTokenService){
         return true;
     }
-    
+    console.log("disvn")
     this.router.navigate(['/login']);
     return false;
   }

@@ -1,0 +1,20 @@
+.mat-drawer
+{
+    width: 250px;
+    background: linear-gradient(to bottom, #039ed3 0%, #85cce4 100%);
+    margin-right: 200px;
+}
+
+.mat-drawer-container 
+{
+    height: 100%;
+    padding-right: 1rem;
+}
+
+.container{
+  margin-bottom: 1rem;
+  padding: 10px 0;
+}
+body{
+  background-color: #eee;
+}

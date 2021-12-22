@@ -1,6 +1,7 @@
 import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Role } from 'src/app/common/role';
 import { User } from 'src/app/common/user';
 import { UsersService } from 'src/app/services/users.service';
 
@@ -13,6 +14,7 @@ export class EditUserComponent implements OnInit {
 
   id = -1;
   user:User = new User();
+  role:Role = new Role();
 
   constructor(private userService: UsersService, private route: ActivatedRoute, private router: Router) { }
 
@@ -23,6 +25,8 @@ export class EditUserComponent implements OnInit {
 
     this.userService.getUserById(this.id).subscribe(data => {
       this.user = data;
+      this.user.roleId = data.roleId;
+      console.log(this.user)
     }, error => console.log(error));
   }
 
@@ -34,6 +38,9 @@ export class EditUserComponent implements OnInit {
   }
    
   goToUsersList(){
-    this.router.navigate(['/users']);
+    this.router.navigate(['/users'])
+    .then(() => {
+      window.location.reload();
+   });
   }
 }

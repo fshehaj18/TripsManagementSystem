@@ -2,6 +2,7 @@
 <table class="table table-hover">
 
     <thead class="thead-dark">
+        <th>Id</th>
         <th>Name</th>
         <th>Surname</th>
         <th>Email</th>
@@ -13,6 +14,7 @@
         
         <tr  *ngFor="let tempUser of user">
 
+            <td > {{ tempUser.id}}</td>
             <td > {{ tempUser.firstName}}</td>
             <td > {{ tempUser.lastName}}</td>
             <td> {{ tempUser.email}}</td>  

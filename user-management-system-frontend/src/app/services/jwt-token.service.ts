@@ -11,8 +11,9 @@ export class JwtTokenService {
   constructor(private httpClient: HttpClient, private router: Router) { }
 
    generateToken(request){
-     if(localStorage.getItem('token'))
+     if(localStorage.getItem('token') || localStorage.getItem('role')){
     localStorage.removeItem('token');
+    localStorage.removeItem('role');}
     return this.httpClient.post<any>("http://localhost:8080/login", request, {responseType:'text' as 'json'});
     
   }

@@ -34,20 +34,26 @@ import { CreateFlightComponent } from './components/create-flight/create-flight.
 import { TripsListComponent } from './components/trips-list/trips-list.component';
 import { FlightsListComponent } from './components/flights-list/flights-list.component';
 import { RoleGuard } from './role.guard';
+import { UserTripListComponent } from './components/user-trip-list/user-trip-list.component';
+import { UserSidenavComponent } from './components/user-sidenav/user-sidenav.component';
+import { MatSelectModule} from '@angular/material/select';
+
+import { AST } from '@angular/compiler';
 
 const routes: Routes = [
   {path: 'role/:id', component: UserListComponent, canActivate: [AuthGuard]},
-  {path: 'users/:id', component: UserListComponent, canActivate: [AuthGuard]},
+  {path: 'users/:id', component: UserListComponent, canActivate: [AuthGuard, RoleGuard],  data: {role: 'ADMIN' }},
   {path: 'roles', component: RolesListComponent, canActivate: [AuthGuard]},
   {path: 'users', component: ManagerDashboardComponent, canActivate: [AuthGuard, RoleGuard],  data: {role: 'ADMIN' }},
   {path: 'create-user', component: CreateUserComponent, canActivate: [AuthGuard, RoleGuard],  data: {role: 'ADMIN' }},
   {path: 'edit-user/:id', component: EditUserComponent, canActivate: [AuthGuard] },
   {path: 'login', component: LoginComponent , canActivate: [AuthGuard]},
-  {path: 'trips', component: TripsListComponent, canActivate: [AuthGuard, RoleGuard], data: {role: 'USER' }},
-  {path: 'flights', component: FlightsListComponent, canActivate: [AuthGuard, RoleGuard]},
-  {path: 'flights/create-flight', component: CreateFlightComponent, canActivate: [AuthGuard], data: {role: 'USER' }},
+  {path: 'trips', component: UserDashboardComponent},
+  {path: 'flights', component: FlightsListComponent, canActivate: [AuthGuard, RoleGuard], data: {role: 'ADMIN' }},
+  {path: 'flights/create-flight', component: CreateFlightComponent, canActivate: [AuthGuard], data: {role: 'ADMIN' }},
   {path: 'trips/create-trip', component: CreateTripComponent, canActivate: [AuthGuard], data: {role: 'USER' }},
   {path: 'trips/:id', component: EditTripComponent, canActivate: [AuthGuard]},
+  {path: 'admin/trips', component: TripsListComponent, canActivate: [AuthGuard, RoleGuard], data: {role: 'ADMIN' }},
   {path: 'flights/:id', component: EditFlightComponent, canActivate: [AuthGuard], data: {role: 'ADMIN' }},
 
   
@@ -73,6 +79,8 @@ const routes: Routes = [
     CreateFlightComponent,
     TripsListComponent,
     FlightsListComponent,
+    UserTripListComponent,
+    UserSidenavComponent,
 
   ],
   imports: [
@@ -87,7 +95,8 @@ const routes: Routes = [
     MatListModule,
     BrowserAnimationsModule,
     FormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    MatSelectModule
   ],
   exports: [
     RouterModule,

@@ -27,10 +27,10 @@
              <td > {{ tempTrip.tripStatus}}</td> 
             <td>
                  
-                <button *ngIf="tempTrip.tripStatus==='WAITING'" class="btn btn-success btn-sm rounded-0" type="button" data-placement="top" title="Edit" ><fa-icon [icon]="faCheck"></fa-icon> </button>
+                <button *ngIf="tempTrip.tripStatus==='WAITING'" (click)="accept(tempTrip.tripId)" class="btn btn-success btn-sm rounded-0" type="button" data-placement="top" title="Edit" ><fa-icon [icon]="faCheck"></fa-icon> </button>
             
             </td>
-          <td><button *ngIf="tempTrip.tripStatus==='WAITING'" class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><fa-icon [icon]="faTimes"></fa-icon></button></td>
+          <td><button *ngIf="tempTrip.tripStatus==='WAITING'" (click)="reject(tempTrip.tripId)" class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><fa-icon [icon]="faTimes"></fa-icon></button></td>
         </tr>
     </tbody>
 </table>

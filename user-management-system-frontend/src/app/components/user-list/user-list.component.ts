@@ -1,7 +1,7 @@
 import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { Role } from 'src/app/common/role';
@@ -18,7 +18,7 @@ export class UserListComponent implements OnInit {
 
   faEdit = faEdit;
   faTrash = faTrash;
-  faUserPlus = faUserPlus;
+  faPlus = faPlus;
 
   user: User[] = [];
   currentRoleId: number | undefined;

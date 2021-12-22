@@ -22,12 +22,13 @@ export class UsersService {
     return this.httpClient.get(`${this.baseUrl}`).pipe(
       map((res: any) => 
       res.map((data) => {
+        
         return{
             id: data.id,
             firstName: data.firstName,
             lastName: data.lastName,
             email: data.email,
-            role_id: data.role.roleId,
+            roleId: data.role.roleId,
         };
       })
       )
@@ -37,7 +38,19 @@ export class UsersService {
 
   getUserById(id: number): Observable<User>{
     
-    return this.httpClient.get<User>(`${this.baseUrl}/${id}`);
+    return this.httpClient.get(`${this.baseUrl}/${id}`).pipe(
+      map((data: any) =>{
+        return {
+          id: data.id,
+          firstName: data.firstName,
+            lastName: data.lastName,
+            password: null,
+            email: data.email,
+            roleId: data.role.roleId,
+        }
+        })
+    
+    );
 
   }
   

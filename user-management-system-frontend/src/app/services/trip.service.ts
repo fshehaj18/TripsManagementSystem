@@ -27,15 +27,22 @@ export class TripService {
   getTrips(): Observable<Object>
   
   {
-      let getTripsUrl =  `http://localhost:8080/admin/trip`;
+      let getTripsUrl =  `http://localhost:8080/admin/trip/`;
 
     return this.httpClient.get(`${getTripsUrl}`);
   }
 
-  respondTripRequest(id: number)
+  sendTrip(id: number): Observable<Object>
   {
-    let getTripsUrl =  `http://localhost:8080/admin/trip/${id}/send`;
-
-    return this.httpClient.put(`${getTripsUrl}`, id);
+    console.log(id);
+    return this.httpClient.put(`http://localhost:8080/user/trip/${id}/send/`, null);
+    
+  }
+  getTripsByUser(): Observable<Object>{
+      return  this.httpClient.get(`http://localhost:8080/user/trip`);
+  }
+  respondTripRequest(id: number, response: any)
+  {
+    return this.httpClient.put(`http://localhost:8080/admin/trip/${id}/send`, response);
   }
 }

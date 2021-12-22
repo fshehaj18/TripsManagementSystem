@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faPlane, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Flight } from 'src/app/common/flight';
 import { FlightService } from 'src/app/services/flight.service';
 
@@ -17,16 +17,22 @@ export class FlightsListComponent implements OnInit {
 
   faEdit = faEdit;
   faTrash = faTrash;
+  faPlane = faPlane;
 
   ngOnInit(): void {
     this.listTrips();
   }
-  listTrips() {
+  listTrips() 
+  {
     this.flightService.getFlights().subscribe(
     (data: Flight[]) =>{
       this.flights = data;
      
     });
+  }
+
+  createFlight(){
+    this.routes.navigate(['/flights/create-flight']);
   }
 
 }

@@ -9,6 +9,7 @@ import { TripService } from 'src/app/services/trip.service';
 })
 export class CreateTripComponent implements OnInit {
 
+  selected='MEETING';
   trip: Trip = new Trip();
   constructor(private tripService: TripService) { }
 
@@ -25,5 +26,5 @@ export class CreateTripComponent implements OnInit {
   
     );
   }
-
+  
 }

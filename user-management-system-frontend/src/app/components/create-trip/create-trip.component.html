@@ -9,22 +9,40 @@
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="inputName" >Origin</label>
-                <input type="email" class="form-control" [(ngModel)] = "trip.origin"  name = "name" id="inputName" placeholder="Name">
+                <input type="email" class="form-control" [(ngModel)] = "trip.origin"  name = "origin" id="inputOrigin" placeholder="Origin">
               </div>
               <div class="form-group col-md-6">
                 <label for="inputName" >Destination</label>
-                <input type="email" class="form-control" [(ngModel)] = "trip.destination"  name = "name" id="inputName" placeholder="Name">
+                <input type="email" class="form-control" [(ngModel)] = "trip.destination"  name = "destination" id="inputDestination" placeholder="Destination">
               </div>
+              <div class="form-group col-md-6">
+                <label for="inputName" >Description</label>
+                <input type="text" class="form-control" [(ngModel)] = "trip.description"  name = "description" id="inputDescription" placeholder="Description">
               </div>
+              <div class="form-group col-md-6">
+                <mat-form-field appearance="fill">
+              <mat-label>Reason</mat-label>
+              <mat-select  [(ngModel)] = "trip.tripReason" name="tripReason" id="inputTripReason">
+                <mat-option value=" MEETING">MEETING</mat-option>
+                <mat-option value="PROJECT">PROJECT</mat-option>
+                
+                <mat-option value="WORKSHOP">WORKSHOP</mat-option>
+              <mat-option value="OTHER"> OTHER</mat-option>
+                 
+                </mat-select>
+              </mat-form-field>
+
+              </div>
+            </div>
                   <div class="form-row">
                       <div class="form-group col-md-6">
                         <label for="inputName">Departure Date</label>
-                        <input type="password" class="form-control" [(ngModel)] = "trip.departureDate"  name = "pass" id="inputPass" placeholder="Password">
+                        <input type="date" class="form-control" [(ngModel)] = "trip.departureDate"  name = "departureDate" id="inputDepartureDate" >
                       </div>
                       </div>
             <div class="form-group">
               <label for="inputEmail">Arrival Date</label>
-              <input type="text" class="form-control" name = "email" id="inputEmail" [(ngModel)] = "trip.arrivalDate" placeholder="someone@example.com">
+              <input type="date" class="form-control" name = "arrivalDate" id="inputArrivalDate" [(ngModel)] = "trip.arrivalDate" >
             </div>
   
       <button class="btn btn-primary" type="submit" (click)="onSubmit()">Create Trip</button>

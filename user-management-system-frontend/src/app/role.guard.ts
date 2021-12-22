@@ -16,7 +16,7 @@ export class RoleGuard implements CanActivate, CanActivateChild, CanDeactivate<u
     let roles = localStorage.getItem('role');
 
     const expectedRoles = route.data.role;
-    console.log(expectedRoles)
+    console.log(expectedRoles);
     return (expectedRoles == roles) ? true : false;
   }
   canActivateChild(

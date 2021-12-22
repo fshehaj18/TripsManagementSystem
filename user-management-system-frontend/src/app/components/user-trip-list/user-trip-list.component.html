@@ -1,0 +1,41 @@
+<table class="table table-hover">
+
+    <thead class="thead-dark">
+       
+        <th>Id</th>
+        <th>Origin</th>
+        <th>Destination</th>
+        <th>Description</th>
+        <th>Reason</th>
+        <th>Departure Date</th>
+        <th>Arrival Date</th>
+         <th>Status</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>Send</th>
+    </thead>
+
+    <tbody>
+        
+        <tr  *ngFor="let tempTrip of trips" [ngStyle]="{'background-color': tempTrip.tripStatus == 'REJECTED' ? 'red' : 'white'}">
+
+           
+            <td > {{ tempTrip.tripId}}</td>
+            <td > {{ tempTrip.origin}}</td>
+            <td> {{ tempTrip.destination}}</td>
+            <td> {{ tempTrip.description}}</td>  
+            <td> {{ tempTrip.tripReason}}</td> 
+            <td> {{ tempTrip.departureDate}}</td> 
+            <td> {{ tempTrip.arrivalDate}}</td>
+             <td > {{ tempTrip.tripStatus}}</td> 
+            <td>
+                 
+                <button *ngIf="tempTrip.tripStatus==='CREATED'" (click)="editTrip(tempTrip.tripId)" class="btn btn-success btn-sm rounded-0" type="button" data-placement="top" title="Edit" ><fa-icon [icon]="faEdit"></fa-icon> </button>
+            
+            </td>
+          <td><button *ngIf="tempTrip.tripStatus==='CREATED'" (click)="deleteTrip(tempTrip.tripId)" class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><fa-icon [icon]="faTrash"></fa-icon></button></td>
+          <td><button  *ngIf="tempTrip.tripStatus==='CREATED'" (click)="sendTrip(tempTrip.tripId)" class="btn btn-primary btn-sm  rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Send"><fa-icon [icon]="faArrow"></fa-icon>Send</button></td>
+
+        </tr>
+    </tbody>
+</table>

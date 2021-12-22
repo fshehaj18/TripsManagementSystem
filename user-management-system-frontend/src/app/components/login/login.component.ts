@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
     response.subscribe(
       res => {
         let tokenValue = JSON.parse(res).jwt;
+        let userId = JSON.parse(res).id;
         localStorage.setItem('token', tokenValue);
 
         let role = JSON.parse(res).role;

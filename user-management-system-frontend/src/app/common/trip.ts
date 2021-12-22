@@ -1,5 +1,6 @@
 export class Trip {
 
+    tripId!: number;
     tripStatus!: string;
     description!: string;
     origin!: string;
@@ -7,5 +8,6 @@ export class Trip {
     departureDate: Date;
     arrivalDate: Date;
     tripReason!:string;
+    userId!: number;
 
 }

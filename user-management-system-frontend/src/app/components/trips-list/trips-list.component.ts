@@ -13,7 +13,7 @@ export class TripsListComponent implements OnInit {
 
   trips: Trip[];
 
-  constructor(private tripService: TripService, private route:ActivatedRoute, private routes: Router) { }
+  constructor(private tripService: TripService, private route:ActivatedRoute, private router: Router) { }
 
   
   faCheck = faCheck;
@@ -30,4 +30,25 @@ export class TripsListComponent implements OnInit {
     });
   }
 
+  accept(id: number)
+  {
+    var tripStatusDto = {"tripStatus":"ACCEPTED"};
+    this.tripService.respondTripRequest(id, tripStatusDto).subscribe();
+    this.router.navigate(['/admin/trips'])
+    .then(() => {
+      window.location.reload();
+   });;
+  }
+
+  reject(id: number)
+  {
+    var tripStatusDto = {"tripStatus":"REJECTED"};
+    this.tripService.respondTripRequest(id, tripStatusDto).subscribe();
+    this.router.navigate(['/admin/trips'])
+    .then(() => {
+      window.location.reload();
+   });;
+  }
+
+   
 }

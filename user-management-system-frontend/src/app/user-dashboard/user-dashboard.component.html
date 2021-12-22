@@ -1,1 +1,18 @@
-<p>user-dashboard works!</p>
+<mat-drawer-container>
+    <mat-drawer mode="side" opened="true">
+    <app-user-sidenav></app-user-sidenav>
+  </mat-drawer>
+    <mat-drawer-content>
+  
+    
+      <app-header></app-header>
+      <h1 class="mt-3 mb-3">Trip Management System</h1>
+  <div class="container">
+    <a  
+    button class="btn btn-inverse btn-lg rounded-0" (click)="createTrip()" style="padding-bottom: 1rem;" type="button" data-toggle="tooltip" data-placement="top" > <fa-icon [icon]="faMapMarker"></fa-icon>Create Trip
+    </a> 
+  <app-user-trip-list></app-user-trip-list>
+
+  </div>
+    </mat-drawer-content>
+  </mat-drawer-container>   
