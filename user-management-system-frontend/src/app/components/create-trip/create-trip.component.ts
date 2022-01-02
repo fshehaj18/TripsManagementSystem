@@ -10,7 +10,7 @@ import { TripService } from 'src/app/services/trip.service';
 export class CreateTripComponent implements OnInit {
 
   selected='MEETING';
-  trip: Trip = new Trip();
+  trip: Trip = new Trip(null);
   constructor(private tripService: TripService) { }
 
   ngOnInit(): void {
@@ -25,6 +25,7 @@ export class CreateTripComponent implements OnInit {
     },
   
     );
+    error => {}
   }
   
 }

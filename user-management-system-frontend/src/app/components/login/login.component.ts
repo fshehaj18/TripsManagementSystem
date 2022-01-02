@@ -38,12 +38,14 @@ export class LoginComponent implements OnInit {
         let role = JSON.parse(res).role;
         localStorage.setItem('role', role);
         console.log(role);
+
         if(role === "ADMIN")
         this.router.navigate(['/users']);
+        
         else if(role === "USER")
         this.router.navigate(['/trips']);
       },
-      //err => console.log(err)
+      err => console.log(err)
     )
   }
   

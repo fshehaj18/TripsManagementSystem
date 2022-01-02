@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Flight } from 'src/app/common/flight';
 import { Trip } from 'src/app/common/trip';
 import { TripService } from 'src/app/services/trip.service';
 
@@ -10,7 +11,8 @@ import { TripService } from 'src/app/services/trip.service';
 })
 export class EditTripComponent implements OnInit {
 
-  trip:Trip = new Trip();
+  f: Flight = new Flight();
+  trip:Trip = new Trip(this.f);
   id = -1;
 
   constructor(private tripService: TripService, private route: ActivatedRoute, private router: Router) { }

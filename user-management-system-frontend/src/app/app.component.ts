@@ -5,6 +5,7 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 import {faUserPlus} from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from './services/auth.service';
 
+  
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

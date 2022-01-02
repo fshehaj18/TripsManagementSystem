@@ -19,8 +19,8 @@
 
             <td > {{ tempFlight.origin}}</td>
             <td> {{ tempFlight.destination}}</td>
-            <td> {{ tempFlight.departureDate}}</td> 
-            <td> {{ tempFlight.arrivalDate}}</td> 
+            <td> {{ tempFlight.departureDate | date:'medium'}}</td> 
+            <td> {{ tempFlight.arrivalDate | date:'medium'}}</td> 
             <td>
                  
                 <button class="btn btn-success btn-sm rounded-0" type="button" data-placement="top" title="Edit" ><fa-icon [icon]="faEdit"></fa-icon> </button>

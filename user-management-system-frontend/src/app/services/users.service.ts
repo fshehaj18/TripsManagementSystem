@@ -57,7 +57,7 @@ export class UsersService {
   createUser(user: User): Observable<Object>
   {
 
-    let addUrl=`http://localhost:8080/api/users`;
+    let addUrl=`http://localhost:8080/admin/users`;
 
       return this.httpClient.post(`${addUrl}`, user);
    

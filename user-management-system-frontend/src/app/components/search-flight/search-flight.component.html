@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+        <form >
+          <div class="card">
+            <div class="card-header" style="font-weight: bold; font-size: 22px;">Search</div>
+    
+            <div class="card-body">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputOrigin" >Origin</label>
+                <input type="email" class="form-control" [(ngModel)] = "flight.origin"  name = "origin" id="inputOrigin" placeholder="Origin">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputName" >Destination</label>
+                <input type="email" class="form-control" [(ngModel)] = "flight.destination"  name = "destination" id="inputDestination" placeholder="Destination">
+              </div>
+              </div>
+                  <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="inputName">Departure Date</label>
+                        <input type="datetime-local" class="form-control" [(ngModel)] = "flight.departureDate"  name = "departureDate" id="inputDepartureDate" placeholder="Password">
+                      </div>
+                      </div>
+            <div class="form-group">
+              <label for="inputEmail">Arrival Date</label>
+              <input type="datetime-local" class="form-control" name = "arrivalDate" id="inputArrivalDate" [(ngModel)] = "flight.arrivalDate" placeholder="someone@example.com">
+            </div>
+  
+      <button class="btn btn-primary" type="submit" (click)="onSubmit()">Search</button>
+    </div>
+  </div>
+    </form>
+  </div>
+  </div>
+
+  <div class="row justify-content-center">
+
+  <table class="table table-hover">
+    <thead class="thead-dark">
+      <th>Origin</th>
+      <th>Destination</th>
+      <th>Departure Date</th>
+      <th>Arrival Date</th>
+      <th>Add</th>
+    </thead>
+    <tbody>
+        
+      <tr  *ngFor="let f of flights">
+
+         
+          <td > {{ f.origin}}</td>
+          <td> {{ f.destination}}</td> 
+          <td> {{ f.departureDate | date:'medium'}}</td> 
+          <td> {{ f.arrivalDate | date:'medium'}}</td> 
+          <td><button  class="btn btn-success btn-sm rounded-0" type="button" data-placement="top" title="Add" >Add Flight </button></td>  
+
+          <td>
+  </table>
+
+  </div> 
+
+  </div>

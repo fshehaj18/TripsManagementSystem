@@ -22,7 +22,9 @@ export class CreateUserComponent implements OnInit {
     this.userService.createUser(this.user).subscribe( data => {
 
       console.log(data);
+      this.message = true;
     },
+    err => {/*console.log(err)*/}
   
     );
   
@@ -34,6 +36,6 @@ export class CreateUserComponent implements OnInit {
   }
   onSubmit(): void {
     this.saveUser();
-    this.message = true;
+    
   }
 }

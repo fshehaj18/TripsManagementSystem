@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Flight } from '../common/flight';
@@ -24,5 +24,14 @@ export class FlightService {
     let addUrl=`http://localhost:8080/admin/flight`;
 
     return this.httpClient.post(`${addUrl}`, flight);
+  }
+
+  searchFlights(f: Flight)
+  {
+    let url = `http://localhost:8080/user/flights`;
+
+
+    
+    return this.httpClient.post(`${url}`,f);
   }
 }

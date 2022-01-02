@@ -8,7 +8,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import {MatSidenavModule} from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
@@ -37,8 +36,11 @@ import { RoleGuard } from './role.guard';
 import { UserTripListComponent } from './components/user-trip-list/user-trip-list.component';
 import { UserSidenavComponent } from './components/user-sidenav/user-sidenav.component';
 import { MatSelectModule} from '@angular/material/select';
+import {MatTableModule} from '@angular/material/table';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { AST } from '@angular/compiler';
+import { SearchFlightComponent } from './components/search-flight/search-flight.component';
 
 const routes: Routes = [
   {path: 'role/:id', component: UserListComponent, canActivate: [AuthGuard]},
@@ -48,14 +50,14 @@ const routes: Routes = [
   {path: 'create-user', component: CreateUserComponent, canActivate: [AuthGuard, RoleGuard],  data: {role: 'ADMIN' }},
   {path: 'edit-user/:id', component: EditUserComponent, canActivate: [AuthGuard] },
   {path: 'login', component: LoginComponent , canActivate: [AuthGuard]},
-  {path: 'trips', component: UserDashboardComponent},
+  {path: 'trips', component: UserDashboardComponent, canActivate: [AuthGuard, RoleGuard], data: {role: 'USER' }},
   {path: 'flights', component: FlightsListComponent, canActivate: [AuthGuard, RoleGuard], data: {role: 'ADMIN' }},
   {path: 'flights/create-flight', component: CreateFlightComponent, canActivate: [AuthGuard], data: {role: 'ADMIN' }},
-  {path: 'trips/create-trip', component: CreateTripComponent, canActivate: [AuthGuard], data: {role: 'USER' }},
-  {path: 'trips/:id', component: EditTripComponent, canActivate: [AuthGuard]},
+  {path: 'trips/create-trip', component: CreateTripComponent, canActivate: [AuthGuard, RoleGuard], data: {role: 'USER' }},
+  {path: 'trips/:id', component: EditTripComponent, canActivate: [AuthGuard, RoleGuard], data: {role: 'USER' }},
   {path: 'admin/trips', component: TripsListComponent, canActivate: [AuthGuard, RoleGuard], data: {role: 'ADMIN' }},
   {path: 'flights/:id', component: EditFlightComponent, canActivate: [AuthGuard], data: {role: 'ADMIN' }},
-
+  {path: 'user/flights', component: SearchFlightComponent, canActivate: [AuthGuard, RoleGuard], data: {role: 'USER' }},
   
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   //{path: '**',redirectTo: 'create-user', pathMatch: 'full'},
@@ -81,6 +83,7 @@ const routes: Routes = [
     FlightsListComponent,
     UserTripListComponent,
     UserSidenavComponent,
+    SearchFlightComponent,
 
   ],
   imports: [
@@ -96,7 +99,9 @@ const routes: Routes = [
     BrowserAnimationsModule,
     FormsModule,
     RouterModule.forRoot(routes),
-    MatSelectModule
+    MatSelectModule,
+    MatTableModule,
+    MatToolbarModule
   ],
   exports: [
     RouterModule,

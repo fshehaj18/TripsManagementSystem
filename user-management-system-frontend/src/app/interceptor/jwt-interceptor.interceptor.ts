@@ -16,10 +16,9 @@ export class JwtInterceptorInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = localStorage.getItem('token');
-    console.log("token");
-    if(token){
         const cloned = request.clone({
-          headers: request.headers.set("Authorization", "Bearer " + token)
+          headers: request.headers.set("Authorization", "Bearer " + token),
+          
         });
 
         return next.handle(cloned).pipe(
@@ -30,29 +29,13 @@ export class JwtInterceptorInterceptor implements HttpInterceptor {
                   errorMsg = `Error: ${error.error.message}`;
               } else {
                   console.log('This is server side error');
-                  errorMsg = `Error Code: ${error.status},  Message: ${error.message}`;
+                  errorMsg = `Error Code: ${error.status},  Message: ${error.error.message}`;
               }
-              console.log(errorMsg);
+              window.alert(error.error.message)
               return throwError(errorMsg);
           })
       );
     }
-    else{
-      console.log("munich")
-     return next.handle(request).pipe(
-      catchError((error: HttpErrorResponse) => {
-          let errorMsg = '';
-          if (error.error instanceof ErrorEvent) {
-              console.log('This is client side error');
-              errorMsg = `Error: ${error.error.message}`;
-          } else {
-              console.log('This is server side error');
-              errorMsg = `Error Code: ${error.status},  Message: ${error.message}`;
-          }
-          console.log(errorMsg);
-          return throwError(errorMsg);
-      })
-  );
-    }
-  }
+    
+  
 }
