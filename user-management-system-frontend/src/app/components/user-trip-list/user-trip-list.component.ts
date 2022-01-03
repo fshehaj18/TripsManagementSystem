@@ -36,7 +36,7 @@ export class UserTripListComponent implements OnInit, AfterViewInit {
   flights: Flight[];
 
   displayedColumns = ['id','origin', 'destination', 'reason', 'arrivalDate', 'departureDate','status', 'edit', 'delete', 'send', 'viewFlightsButton', 'addFlightsButton'];
-  displayedColumns2 = ['origin', 'destination', 'arrivalDate', 'departureDate'];
+  displayedColumns2 = ['origin', 'destination', 'departureDate', 'arrivalDate'];
   toggle = 'collapsed';
 
   constructor(private tripService: TripService, private route:ActivatedRoute, private routes: Router) { }
@@ -109,6 +109,7 @@ export class UserTripListComponent implements OnInit, AfterViewInit {
     this.tripService.sendTrip(id).subscribe(
       
     );
+    window.location.reload();
   }
   editTrip(id: number){
 
@@ -137,7 +138,7 @@ export class UserTripListComponent implements OnInit, AfterViewInit {
   }
 
   add(id: number){
-    localStorage.setItem('flightId', id.toString());
+    localStorage.setItem('tripId', id.toString());
     this.routes.navigate(['/user/flights'])
   }
 }

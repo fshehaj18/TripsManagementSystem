@@ -11,6 +11,8 @@ export class CreateTripComponent implements OnInit {
 
   selected='MEETING';
   trip: Trip = new Trip(null);
+  message = false;
+
   constructor(private tripService: TripService) { }
 
   ngOnInit(): void {
@@ -22,6 +24,7 @@ export class CreateTripComponent implements OnInit {
     this.tripService.createTrip(this.trip).subscribe( data => {
 
       console.log(data);
+      this.message = true;
     },
   
     );

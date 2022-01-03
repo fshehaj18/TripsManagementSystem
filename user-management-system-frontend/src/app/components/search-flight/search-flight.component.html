@@ -48,12 +48,11 @@
         
       <tr  *ngFor="let f of flights">
 
-         
           <td > {{ f.origin}}</td>
           <td> {{ f.destination}}</td> 
           <td> {{ f.departureDate | date:'medium'}}</td> 
           <td> {{ f.arrivalDate | date:'medium'}}</td> 
-          <td><button  class="btn btn-success btn-sm rounded-0" type="button" data-placement="top" title="Add" >Add Flight </button></td>  
+          <td><button  class="btn btn-success btn-sm rounded-0" type="button" (click)="addFlight(f.flightId)" data-placement="top" title="Add" >Add Flight </button></td>  
 
           <td>
   </table>

@@ -22,11 +22,13 @@
           <div class="form-group">
             <label for="inputEmail">Email</label>
             <input type="text" class="form-control" name = "email" id="inputEmail" [(ngModel)] = "user.email" placeholder="someone@example.com">
+            <label for="inputPassword">Password</label>
+            <input type="password" class="form-control" name = "password" id="inputPassword" [(ngModel)] = "user.password" placeholder="Password" readonly>
           </div>
           <div class="form-row">
             <div class="form-group col-md-4">
               <label for="inputState">Role</label>
-              <input type="text" class="form-control" name = "roleId" [(ngModel)] = "user.roleId" id="inputRoleId">
+              <input type="text" class="form-control" name = "roleId" [(ngModel)] = "user.roleId" id="inputRoleId" readonly>
             </div>
           </div>
 

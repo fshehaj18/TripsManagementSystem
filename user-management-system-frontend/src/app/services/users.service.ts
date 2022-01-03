@@ -44,7 +44,7 @@ export class UsersService {
           id: data.id,
           firstName: data.firstName,
             lastName: data.lastName,
-            password: null,
+            password: data.password,
             email: data.email,
             roleId: data.role.roleId,
         }

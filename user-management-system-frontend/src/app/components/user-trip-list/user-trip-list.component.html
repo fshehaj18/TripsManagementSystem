@@ -129,9 +129,14 @@
                       <ng-container matColumnDef="{{innerColumn}}"
                         *ngFor="let innerColumn of displayedColumns2">
                         <th mat-header-cell *matHeaderCellDef mat-sort-header> {{innerColumn}} </th>
-                        <td mat-cell *matCellDef="let element"> {{element[innerColumn]  }} </td>
+                        <div *ngIf="innerColumn != 'departureDate' && innerColumn != 'arrivalDate'">
+                        <td mat-cell *matCellDef="let element" > {{element[innerColumn] }} </td></div>
+                        <div *ngIf="innerColumn == 'departureDate'">
+                          <td mat-cell *matCellDef="let element" > {{element[innerColumn]  | date:'medium'}} </td></div>
+                          <div *ngIf="innerColumn == 'arrivalDate'">
+                            <td mat-cell *matCellDef="let element" > {{element[innerColumn]  | date:'medium'}} </td></div>
                       </ng-container>
-                      <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+                      <tr class="table-light"  mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
                       <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
                     </table>
                 </div>

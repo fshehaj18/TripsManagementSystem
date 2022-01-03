@@ -42,7 +42,6 @@ export class TripService {
   }
   getTripsByUser(): Observable<Object>{
     let date: Date = new Date(2017, 4, 4)
-    let f:Flight = {"origin":"", "destination":"", "departureDate":date, "arrivalDate":date};
       return  this.httpClient.get(`http://localhost:8080/user/trip`).pipe(
         map((res: any) => 
         
@@ -78,5 +77,12 @@ export class TripService {
   })
       ))*/;
 }
+
+
+  addFlight(id: number){
+    let tripId = localStorage.getItem('tripId')
+    console.log(tripId)
+    return this.httpClient.put(`http://localhost:8080/user/trip/${tripId}/flight`, {'flightId': id})
+  }
 
 }
