@@ -1,2 +1,0 @@
-validimet ne service(bussines logic)
-token si json
