@@ -1,21 +1,17 @@
 package com.example.service;
 
-import com.example.service.dto.FlightDto;
-import com.example.service.model.Flight;
-import com.example.service.repository.FlightRepository;
-import com.example.service.service.FlightServiceImpl;
+import com.example.dto.FlightDto;
+import com.example.model.Flight;
+import com.example.repository.FlightRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.test.context.event.annotation.BeforeTestMethod;
 
-import static org.hamcrest.Matchers.any;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.Optional;

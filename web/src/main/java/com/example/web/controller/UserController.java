@@ -1,18 +1,15 @@
 package com.example.web.controller;
 
-import com.example.service.dto.*;
-import com.example.service.model.Flight;
-import com.example.service.model.Trip;
-import com.example.service.model.TripStatus;
-import com.example.service.model.User;
-import com.example.service.service.FlightServiceImpl;
-import com.example.service.service.MyUserDetailsService;
-import com.example.service.service.TripServiceImpl;
-import com.example.service.service.UserServiceImpl;
+import com.example.dto.*;
+import com.example.model.Flight;
+import com.example.model.Trip;
+import com.example.model.User;
+import com.example.service.FlightServiceImpl;
+import com.example.service.TripServiceImpl;
+import com.example.service.UserServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,6 +35,7 @@ public class UserController {
 
     @PostMapping("/trip")
     public ResponseEntity<Trip> createTrip(@RequestBody TripDto tripDto, Principal principal) throws Exception {
+        System.out.println(tripDto.getArrivalDate());
         User user = userService.findByEmail(principal.getName());
         return ResponseEntity.ok().body(tripService.saveTrip(tripDto, user.getId()));
     }
@@ -50,7 +48,7 @@ public class UserController {
 
 
     @GetMapping("/trip")
-    public ResponseEntity<List<Trip>> getAllUserTrips(Principal principal) {
+    public ResponseEntity<List<TripDto>> getAllUserTrips(Principal principal) {
         User user = userService.findByEmail(principal.getName());
         return ResponseEntity.ok().body(tripService.filterTripsByUser(user.getId()));
 
@@ -93,7 +91,7 @@ public class UserController {
         return ResponseEntity.ok().body(null);
     }
 
-    @GetMapping("/flights")
+    @PostMapping("/flights")
     public ResponseEntity<List<Flight>> searchFlights(@RequestBody FlightDto flightDto) throws Exception {
         logger.debug(flightDto);
         return ResponseEntity.ok().body(flightService.searchFlights(flightDto.getOrigin(), flightDto.getDestination(),
@@ -101,11 +99,7 @@ public class UserController {
     }
 
     @GetMapping("/all-flights")
-    public ResponseEntity<List<Flight>> getAllFlights(){
+    public ResponseEntity<List<FlightDto>> getAllFlights(){
         return ResponseEntity.ok().body(flightService.getFlights());
-    }
-    @GetMapping("trip/{id}/flights")
-    public ResponseEntity<List<Flight>> getFlightsByTrip(@PathVariable Long id){
-        return ResponseEntity.ok().body(tripService.getFlightsByTrip(id));
     }
 }

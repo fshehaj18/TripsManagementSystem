@@ -1,24 +1,17 @@
 package com.example.web.controller;
 
-import com.example.service.dto.FlightDto;
-import com.example.service.dto.TripReasonDto;
-import com.example.service.dto.TripStatusDto;
-import com.example.service.dto.UserDto;
-import com.example.service.model.Flight;
-import com.example.service.model.Trip;
-import com.example.service.model.User;
-import com.example.service.service.FlightServiceImpl;
-import com.example.service.service.TripServiceImpl;
-import com.example.service.service.UserServiceImpl;
+import com.example.dto.*;
+import com.example.model.Flight;
+import com.example.model.Trip;
+import com.example.model.User;
+import com.example.service.FlightServiceImpl;
+import com.example.service.TripServiceImpl;
+import com.example.service.UserServiceImpl;
 import javassist.NotFoundException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -48,17 +41,29 @@ public class AdminController {
     }
 
     @GetMapping("/users")
-    public ResponseEntity<List<User>> getAllUsers() throws NotFoundException {
+    public ResponseEntity<List<UserDto>> getAllUsers() throws NotFoundException {
         return ResponseEntity.ok().body(userService.getAllUsers());
     }
 
+    @GetMapping("/users/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable Long id) throws NotFoundException {
+        return ResponseEntity.ok().body(userService.findById(id));
+    }
+
+    @DeleteMapping("/users/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id){
+        userService.deleteUser(id);
+        return ResponseEntity.ok().body(null) ;
+    }
+
     @GetMapping("/trip")
-    public ResponseEntity<List<Trip>> getAllSendTrips() {
+    public ResponseEntity<List<TripDto>> getAllSendTrips() {
         return ResponseEntity.ok().body(tripService.getAllSendTrips());
     }
 
     @PutMapping("/trip/{id}/send")
     public ResponseEntity<Trip> answerRequest(@RequestBody TripStatusDto tripStatusDto, @PathVariable Long id) throws Exception {
+        System.out.println(tripStatusDto);
         return ResponseEntity.ok().body(tripService.answerTripRequest(id, tripStatusDto));
     }
 
@@ -79,7 +84,7 @@ public class AdminController {
     }
 
     @GetMapping("/flights")
-    public ResponseEntity<List<Flight>> getFlights(){
+    public ResponseEntity<List<FlightDto>> getFlights(){
 
         return ResponseEntity.ok().body(flightService.getFlights());
     }
@@ -90,5 +95,10 @@ public class AdminController {
         flightService.deleteFlight(id);
 
         return ResponseEntity.ok().body(null);
+    }
+
+    @GetMapping("/trips/{id}")
+    public ResponseEntity<Trip> getTripById(@PathVariable Long id){
+        return ResponseEntity.ok().body(tripService.findById(id));
     }
 }
