@@ -9,11 +9,9 @@ import java.util.List;
 
 public interface TripService {
 
-    Trip saveTrip(TripDto tripDto, Long userId) throws Exception;
+    TripDto saveTrip(TripDto tripDto, Long userId) throws Exception;
 
     Trip updateTrip(TripDto tripDto, Long id, User user) throws Exception;
-
-    Trip changeTripStatus(Long id, TripStatus tripStatus);
 
     List<TripDto> getAllSendTrips();
 
@@ -33,7 +31,7 @@ public interface TripService {
 
     Trip findById(Long id);
 
-    Trip sendTrip(Long id, User user) throws Exception;
+    TripDto sendTrip(Long id, User user) throws Exception;
 
     List<Trip> filterSentTripsByReason(TripReason tripReason);
 

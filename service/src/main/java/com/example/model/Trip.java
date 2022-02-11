@@ -1,5 +1,6 @@
 package com.example.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.OnDelete;
@@ -16,6 +17,7 @@ import java.util.Set;
 @Table
 @Getter
 @Setter
+
 public class Trip implements Serializable {
 
     @Id
@@ -53,6 +55,7 @@ public class Trip implements Serializable {
             inverseJoinColumns = {@JoinColumn(name = "flight_id")}
     )
     @OnDelete(action = OnDeleteAction.NO_ACTION)
+    @JsonManagedReference
     private Set<Flight> flights = new HashSet<>(0);
 
 

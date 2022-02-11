@@ -31,7 +31,7 @@ public class TripServiceImpl implements TripService {
     private ModelMapper modelMapper;
 
     @Override
-    public Trip saveTrip(TripDto tripDto, Long userId) throws Exception {
+    public TripDto saveTrip(TripDto tripDto, Long userId) throws Exception {
 
         if (tripDto.getDestination().equals(tripDto.getOrigin())) {
             throw new Exception("Origin and destination cannot be the same!!");
@@ -51,7 +51,9 @@ public class TripServiceImpl implements TripService {
         trip.setDestination(tripDto.getDestination());
         trip.setUser(userRepository.getById(userId));
 
-        return tripRepository.save(trip);
+         tripRepository.save(trip);
+
+         return tripDto;
     }
 
     @Override
@@ -79,12 +81,7 @@ public class TripServiceImpl implements TripService {
         return tripRepository.save(trip);
     }
 
-    @Override
-    public Trip changeTripStatus(Long id, TripStatus tripStatus) {
-        Trip trip = tripRepository.findById(id).get();
-        trip.setTripStatus(tripStatus);
-        return tripRepository.save(trip);
-    }
+
 
     @Override
     public List<TripDto> getAllSendTrips() {
@@ -173,13 +170,17 @@ public class TripServiceImpl implements TripService {
     }
 
     @Override
-    public Trip sendTrip(Long id, User user) throws Exception {
+    public TripDto sendTrip(Long id, User user) throws Exception {
         Trip trip = tripRepository.findById(id).get();
         if(user != trip.getUser())
             throw new Exception("You are not allowed to send this trip!");
         if (trip.getTripStatus() != TripStatus.CREATED)
             throw new Exception("Already sent!");
-        return changeTripStatus(id, TripStatus.WAITING);
+
+        trip.setTripStatus(TripStatus.WAITING);
+        tripRepository.save(trip);
+
+        return modelMapper.map(trip, TripDto.class);
     }
 
     @Override

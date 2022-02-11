@@ -1,6 +1,7 @@
 package com.example.service;
 
 import com.example.dto.UserDto;
+import com.example.model.ChangePassword;
 import com.example.model.User;
 import com.example.repository.RoleRepository;
 import com.example.repository.UserRepository;
@@ -56,7 +57,6 @@ public class UserServiceImpl implements UserService {
         user.setFirstName(userDto.getFirstName());
         user.setLastName(userDto.getLastName());
         user.setEmail(userDto.getEmail());
-        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
 
         return userRepository.save(user);
     }
@@ -76,19 +76,25 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User changePassword(String password, Long id) {
+    public User changePassword(ChangePassword changePassword, Long id) throws Exception {
         User user = userRepository.getById(id);
-        user.setPassword(passwordEncoder.encode(password));
-        return userRepository.save(user);
+
+        if(passwordEncoder.matches(changePassword.getOldPassword(), user.getPassword())) {
+
+            user.setPassword(passwordEncoder.encode(changePassword.getPassword()));
+            return userRepository.save(user);
+        }
+        else {
+            throw new Exception("Wrong current password!");
+        }
+
     }
 
     @Override
     public User findById(Long id) {
         return userRepository.findById(id).get();
     }
-
     public void deleteUser(Long id) { userRepository.deleteById(id);}
-
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -99,5 +105,7 @@ public class UserServiceImpl implements UserService {
     public ModelMapper modelMapper() {
         return new ModelMapper();
     }
+
+
 
 }

@@ -4,6 +4,7 @@ import com.example.dto.*;
 import com.example.model.Flight;
 import com.example.model.Trip;
 import com.example.model.User;
+import com.example.service.EmailSenderService;
 import com.example.service.FlightServiceImpl;
 import com.example.service.TripServiceImpl;
 import com.example.service.UserServiceImpl;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
@@ -101,4 +103,13 @@ public class AdminController {
     public ResponseEntity<Trip> getTripById(@PathVariable Long id){
         return ResponseEntity.ok().body(tripService.findById(id));
     }
+
+    @GetMapping("/emails")
+    public ResponseEntity<Void> getEmails(Principal principal) {
+
+        EmailSenderService.checkMail("fridishehaj26@gmail.com", "urxidwzxpwqundle");
+        return ResponseEntity.ok().body(null);
+
+    }
+
 }

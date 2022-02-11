@@ -1,6 +1,7 @@
 package com.example.web.controller;
 
 import com.example.dto.*;
+import com.example.model.ChangePassword;
 import com.example.model.Flight;
 import com.example.model.Trip;
 import com.example.model.User;
@@ -34,7 +35,7 @@ public class UserController {
 
 
     @PostMapping("/trip")
-    public ResponseEntity<Trip> createTrip(@RequestBody TripDto tripDto, Principal principal) throws Exception {
+    public ResponseEntity<TripDto> createTrip(@RequestBody TripDto tripDto, Principal principal) throws Exception {
         System.out.println(tripDto.getArrivalDate());
         User user = userService.findByEmail(principal.getName());
         return ResponseEntity.ok().body(tripService.saveTrip(tripDto, user.getId()));
@@ -55,7 +56,7 @@ public class UserController {
     }
 
     @PutMapping("/trip/{id}/send")
-    public ResponseEntity<Trip> sendTrip(@PathVariable Long id, Principal principal) throws Exception {
+    public ResponseEntity<TripDto> sendTrip(@PathVariable Long id, Principal principal) throws Exception {
         User user = userService.findByEmail(principal.getName());
         return ResponseEntity.ok().body(tripService.sendTrip(id, user));
     }
@@ -101,5 +102,10 @@ public class UserController {
     @GetMapping("/all-flights")
     public ResponseEntity<List<FlightDto>> getAllFlights(){
         return ResponseEntity.ok().body(flightService.getFlights());
+    }
+
+    @PostMapping("/password/{id}")
+    public ResponseEntity<User> changePassword(@RequestBody ChangePassword changePassword, @PathVariable Long id) throws Exception {
+        return ResponseEntity.ok().body(userService.changePassword(changePassword, id));
     }
 }

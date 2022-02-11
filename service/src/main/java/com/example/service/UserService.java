@@ -1,6 +1,7 @@
 package com.example.service;
 
 import com.example.dto.UserDto;
+import com.example.model.ChangePassword;
 import com.example.model.User;
 import javassist.NotFoundException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -18,9 +19,10 @@ public interface UserService {
 
     List<UserDto> getAllUsers() throws NotFoundException;
 
-    User changePassword(String password, Long id);
+    User changePassword(ChangePassword password, Long id) throws Exception;
 
     User findById(Long id);
+
 
 
 }
